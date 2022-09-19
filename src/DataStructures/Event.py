@@ -1,4 +1,4 @@
-from datetime import *
+from datetime import datetime as dt
 
 class Event:
     """
@@ -19,18 +19,9 @@ class Event:
     description : str
         The description of this event
     """
-    def __init__(self, title, start_time, end_time, location, label=(), description=""):
+    def __init__(self, title: str, start_time: dt, end_time: dt, location: str, label=[], description=""):
         """
         Construct a new Event with given parameters
-
-        Parameters
-        ----------
-        title : str
-        start_time : datetime.datetime
-        end_time : datetime.datetime
-        location : str
-        label : tuple (str)
-        description : str
         """
         self.title = title
         self.start_time = start_time
@@ -40,23 +31,26 @@ class Event:
         self.description = description
 
     def get_id(self):
-        return self.title + self.start_time.strftime("%Y, %M, %d, %H:%M")
+        return self.title + self.start_time.isoformat()
 
     # Check representation exposure
-    def get_start(self):
+    def get_start(self) -> dt:
         return self.start_time
 
-    def get_end(self):
+    def get_end(self) -> dt:
         return self.end_time
 
-    def get_label(self):
+    def get_label(self) -> [str]:
         return self.label
 
-    def get_description(self):
+    def get_description(self) -> str:
         return self.description
 
-    def get_title(self):
+    def get_title(self) -> str:
         return self.title
+
+    def get_location(self) -> str:
+        return self.location
 
     def __eq__(self, other):
         return self.get_id() == other.get_id()

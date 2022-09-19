@@ -1,7 +1,6 @@
 from datetime import datetime as dt
 from datetime import date as dd
 import json
-from bson import json_util
 import os
 import sys
 PROJECT_ROOT = os.path.abspath(os.path.join(
