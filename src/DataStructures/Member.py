@@ -11,47 +11,32 @@ class Member:
     balance : float
         The current balance of this member
     """
-    def __init__(self, name, color):
+    def __init__(self, name: str, color: str):
         """
         Construct an instance of Member
-
-        Parameters
-        ----------
-        name : str
-        color : str
         """
         self.name = name
         self.color = color
         self.balance = 0.0
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self.name
 
-    def get_color(self):
+    def get_color(self) -> str:
         return self.color
 
-    def get_balance(self):
+    def get_balance(self) -> float:
         return self.balance
 
-    def set_color(self, color):
+    def set_color(self, color: str):
         """
         Set the color of this member with a given color
-
-        Parameters
-        ----------
-        color : str
-            The new color set to this member
         """
         self.color = color
 
-    def set_balance(self, balance):
+    def set_balance(self, balance: float):
         """
         Set the balance of this member with a given balance
-
-        Parameters
-        ----------
-        balance : float
-            The new balance set to this member
         """
         self.balance = balance
 

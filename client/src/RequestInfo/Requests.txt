@@ -1,8 +1,9 @@
 Request Types:
 
+
 [GET]
 
-/get_trip_list
+https:localhost:8080/get_trip_list
 
 /get_event_list?title="trip-title"
 
@@ -15,6 +16,8 @@ Request Types:
 [POST]
 
 /update_event?title="trip-title"
+
+/delete_event?title="trip-title"
 
 /add_member?title="trip-title"
 

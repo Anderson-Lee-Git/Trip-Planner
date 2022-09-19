@@ -1,4 +1,5 @@
 from DataStructures.Cost import Cost
+from DataStructures.Member import Member
 
 
 class CostManager:
@@ -22,14 +23,14 @@ class CostManager:
         self.transactions = {}
 
     # Test representation exposure here
-    def get_balance(self):
+    def get_balance(self) -> dict:
         return self.balance
 
     # Test representation exposure here
-    def get_transactions(self):
+    def get_transactions(self) -> dict:
         return self.transactions
 
-    def calculate_balance(self, cost):
+    def calculate_balance(self, cost: Cost) -> None:
         """
         Update the balance by calculating the upcoming cost
 
@@ -49,14 +50,9 @@ class CostManager:
             self.balance[payer][debtor] = payer_to_debtor - debtor_to_payer
             self.balance[debtor][payer] = debtor_to_payer - payer_to_debtor
 
-    def add_member(self, member):
+    def add_member(self, member: Member) -> None:
         """
         Add a member into the cost manager
-
-        Parameters
-        ----------
-        member : Member
-            The member aaded to the cost manager
         """
         curr = self.balance.keys()
         self.balance[member] = {}
@@ -64,35 +60,26 @@ class CostManager:
             self.balance[debtor][member] = 0.0
             self.balance[member][debtor] = 0.0
 
-    def delete_member(self, member):
+    def delete_member(self, member: Member) -> None:
         """
         Delete a current member from this cost manager, including the balance sheet
         No behavior if the member does not exist in this manager
-
-        Parameters
-        ----------
-        member : Member
-            The member deleted from this cost manager
         """
         if member in self.balance.keys():
             self.balance.pop(member)
             for debtor in self.balance.keys():
                 self.balance[debtor].pop(member)
 
-    def add_cost(self, cost):
+    def add_cost(self, cost: Cost) -> None:
         """
         Add a new cost into the transaction sheet
         Invoke updating the balance immediately
-
-        Parameters
-        ----------
-        cost : Cost
         """
         self.ID_count += 1
         self.transactions[self.ID_count] = cost
         self.calculate_balance(cost)
 
-    def __str__(self):
+    def __str__(self) -> None:
         result = ""
         for debtor in self.balance.keys():
             result = result + debtor.get_name() + "\n" + "-------------\n"
